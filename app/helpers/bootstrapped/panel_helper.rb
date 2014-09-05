@@ -1,24 +1,24 @@
 module Bootstrapped
   module PanelHelper  
-    def bb_panel(options = {})
-      klass = options.delete(:class)
-      content_tag :div, class: "panel panel-default #{klass}" do
+    def panel(options = {})
+      id, klass, style, options = default_options(options)
+      content_tag :div, class: "panel panel-default #{klass}", style: style, id: id do
         yield
       end
     end
 
-    def bb_panel_heading(options = {})
-      klass = options.delete(:class)
-      content_tag :div, class: "panel-heading #{klass}" do
+    def panel_heading(options = {})
+      id, klass, style, options = default_options(options)
+      content_tag :div, class: "panel-heading #{klass}", style: style, id: id do
         content_tag :div, class: "panel-title" do
           yield
         end
       end
     end
 
-    def bb_panel_body(options = {})
-      klass = options.delete(:class)
-      content_tag :div, class: "panel-body #{klass}" do
+    def panel_body(options = {})
+      id, klass, style, options = default_options(options)
+      content_tag :div, class: "panel-body #{klass}", style: style, id: id do
         yield
       end
     end

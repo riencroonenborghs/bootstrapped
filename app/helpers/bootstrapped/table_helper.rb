@@ -1,9 +1,9 @@
 module Bootstrapped
   module TableHelper  
-    def bb_table(options = {})
-      klass = options.delete(:class)
+    def table(options = {})
       options = {hover: true, bordered: true, condensed: true}.merge!(options)
-      content_tag :table, class: "table #{'table-bordered' if options[:bordered]} #{'table-hover' if options[:hover]} #{'table-condensed' if options[:condensed]} #{klass}" do
+      id, klass, style, options = default_options(options)
+      content_tag :table, class: "table #{'table-bordered' if options[:bordered]} #{'table-hover' if options[:hover]} #{'table-condensed' if options[:condensed]} #{klass}", style: style, id: id do
         yield
       end
     end

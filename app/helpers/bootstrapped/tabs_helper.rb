@@ -1,8 +1,8 @@
 module Bootstrapped
   module TabsHelper
-    def bb_tabs(list = [], options = {})
+    def tabs(list = [], options = {})
       options = {}.merge!(options)
-      klass = options.delete(:class)
+      id, klass, style, options = default_options(options)
 
       tabs = list.map do |label, url, active|
         item_klass = active ? 'active' : ''
@@ -13,25 +13,25 @@ module Bootstrapped
         end
       end.join('')
 
-      content_tag :ul, class: "nav nav-tabs #{klass}", id: options[:id] do
+      content_tag :ul, class: "nav nav-tabs #{klass}", style: style, id: id do
         tabs.html_safe
       end
     end
 
-    def bb_tab_content(id, options = {})
+    def tab_content(id, options = {})
       options = {}.merge!(options)
-      klass = options.delete(:class)
+      id, klass, style, options = default_options(options)
 
-      content_tag :div, id: id, class: "#{klass} tab-content" do
+      content_tag :div, class: "#{klass} tab-content", style: style, id: id do
         yield
       end
     end
 
-    def bb_tab_pane(id, options = {})
+    def tab_pane(id, options = {})
       options = {active: false}.merge!(options)
-      klass = options.delete(:class)
+      id, klass, style, options = default_options(options)
 
-      content_tag :div, id: id, class: "#{klass} tab-pane fade in #{'active' if options[:active]}" do
+      content_tag :div, class: "#{klass} tab-pane fade in #{'active' if options[:active]}", style: style, id: id do
         yield
       end
     end

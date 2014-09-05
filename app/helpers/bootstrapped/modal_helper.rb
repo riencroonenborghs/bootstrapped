@@ -1,6 +1,6 @@
 module Bootstrapped
   module ModalHelper
-    def bb_modal(id, title)    
+    def modal(id, title) 
       content_tag :div, class: "modal fade", id: id, role: 'dialog', 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" do
         content_tag :div, class: "modal-dialog" do
           content_tag :div, class: "modal-content" do
@@ -23,14 +23,15 @@ module Bootstrapped
       end
     end
 
-    def bb_modal_cancel_link(label = 'Cancel')
-      link_to label, '#', class: "cancel_link",  'data-dismiss' => "modal", 'aria-hidden' => "true" 
+    def modal_cancel_link(label = 'Cancel', options = {})
+      id, klass, style, options = default_options(options)
+      link_to label, '#', class: "cancel_link #{klass}", style: style, id: id, 'data-dismiss' => "modal", 'aria-hidden' => "true" 
     end
 
-    def bb_modal_link(label, url, modal_id, options = {})      
-      klass = options.delete(:class)      
+    def modal_link(label, url, modal_id, options = {})      
+      id, klass, style, options = default_options(options)
 
-      link_to label, url, 'data-toggle' => 'modal', 'data-target' => "##{modal_id}"      
+      link_to label, url, 'data-toggle' => 'modal', 'data-target' => "##{modal_id}", class: klass, style: style, id: id
     end
   end
 end

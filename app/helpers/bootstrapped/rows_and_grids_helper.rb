@@ -1,26 +1,29 @@
 module Bootstrapped
   module RowsAndGridsHelper  
-    def bb_row_and_grid(options = {})
-      klass = options.delete(:class)
-      options = {device_size: 'md', grid_size: 12, class: "row #{klass}"}.merge!(options)
-      content_tag(:div, class: options[:class], style: options[:style], id: options[:id]) do
-        content_tag(:div, class: "col-#{options[:device_size]}-#{options[:grid_size]}") do
+    include OptsHelper
+
+    def row_and_grid(options = {})
+      options = {device: :md, size: 12}.merge!(options)
+      id, klass, style, options = default_options(options)
+
+      content_tag(:div, class: "row #{klass}", style: style, id: id) do
+        content_tag(:div, class: "col-#{options[:device]}-#{options[:size]}") do
           yield
         end
       end
     end
 
-    def bb_row(options = {})
-      klass = options.delete(:class)
-      options = {class: "row #{klass}"}.merge!(options)
-      content_tag(:div, class: options[:class], style: options[:style], id: options[:id]) do
+    def row(options = {})
+      id, klass, style, options = default_options(options)
+      content_tag(:div, class: "row #{klass}", style: style, id: id) do
         yield
       end
     end
 
-    def bb_grid(options = {})
-      options = {device_size: 'md', grid_size: 12}.merge!(options)
-      content_tag(:div, class: "#{options[:class]} col-#{options[:device_size]}-#{options[:grid_size]}", style: options[:style], id: options[:id]) do
+    def grid(options = {})
+      options = {device: :md, size: 12}.merge!(options)
+      id, klass, style, options = default_options(options)
+      content_tag(:div, class: "#{klass} col-#{options[:device]}-#{options[:size]}", style: style, id: id) do
         yield
       end
     end
