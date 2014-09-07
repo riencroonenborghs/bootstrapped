@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Bootstrapped::VERSION
   s.authors     = ["Rien Croonenborghs"]
   s.email       = ["rien@croonenborghs.net"]
-  s.homepage    = "http://github/com/riencroonenborgs/bootstrapped"
+  s.homepage    = "http://github.com/riencroonenborgs/bootstrapped"
   s.summary     = "TODO: Summary of Bootstrapped."
   s.description = "TODO: Description of Bootstrapped."
   s.license     = "MIT"
