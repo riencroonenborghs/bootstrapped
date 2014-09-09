@@ -10,7 +10,8 @@ module Bootstrapped
     def badge(label, options = {})
       id, klass, style, options = default_options(options)
 
-      content_tag :span, class: "badge #{klass}", style: style, id: id do
+      options.merge!(class: "badge #{klass}", style: style, id: id)
+      content_tag :span, options do
         label
       end
     end

@@ -13,7 +13,8 @@ module Bootstrapped
         end
       end.join('')
 
-      content_tag :ul, class: "nav nav-tabs #{klass}", style: style, id: id do
+      options.merge!(class: "nav nav-tabs #{klass}", style: style, id: id)
+      content_tag :ul, options do
         tabs.html_safe
       end
     end
@@ -22,7 +23,8 @@ module Bootstrapped
       options = {}.merge!(options)
       id, klass, style, options = default_options(options)
 
-      content_tag :div, class: "#{klass} tab-content", style: style, id: id do
+      options.merge!(class: "#{klass} tab-content", style: style, id: id)
+      content_tag :div, options do
         yield
       end
     end
@@ -31,7 +33,8 @@ module Bootstrapped
       options = {active: false}.merge!(options)
       id, klass, style, options = default_options(options)
 
-      content_tag :div, class: "#{klass} tab-pane fade in #{'active' if options[:active]}", style: style, id: id do
+      options.merge!( class: "#{klass} tab-pane fade in #{'active' if options[:active]}", style: style, id: id)
+      content_tag :div, options do
         yield
       end
     end

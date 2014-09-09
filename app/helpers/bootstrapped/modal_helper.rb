@@ -25,13 +25,16 @@ module Bootstrapped
 
     def modal_cancel_link(label = 'Cancel', options = {})
       id, klass, style, options = default_options(options)
-      link_to label, '#', class: "cancel_link #{klass}", style: style, id: id, 'data-dismiss' => "modal", 'aria-hidden' => "true" 
+
+      options.merge!(class: "cancel_link #{klass}", style: style, id: id, 'data-dismiss' => "modal", 'aria-hidden' => "true" )
+      link_to label, '#', options
     end
 
     def modal_link(label, url, modal_id, options = {})      
       id, klass, style, options = default_options(options)
 
-      link_to label, url, 'data-toggle' => 'modal', 'data-target' => "##{modal_id}", class: klass, style: style, id: id
+      options.merge!('data-toggle' => 'modal', 'data-target' => "##{modal_id}", class: klass, style: style, id: id)
+      link_to label, url, options
     end
   end
 end

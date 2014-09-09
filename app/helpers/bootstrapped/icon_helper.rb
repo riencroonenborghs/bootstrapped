@@ -4,7 +4,8 @@ module Bootstrapped
       options = {size: :md}.merge!(options)
       id, klass, style, options = default_options(options)
 
-      content_tag :span, class: "glyphicon glyphicon-#{type} btn-#{options[:size]} #{klass}", title: '#{options[:title]}', style: style, id: id do
+      options.merge!(class: "glyphicon glyphicon-#{type} btn-#{options[:size]} #{klass}", title: '#{options[:title]}', style: style, id: id)
+      content_tag :span, options do
       end.html_safe
     end
 

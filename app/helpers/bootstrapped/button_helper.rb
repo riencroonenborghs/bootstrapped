@@ -3,7 +3,8 @@ module Bootstrapped
     def button(label, icon, options = {})
       id, klass, style, options = default_options(options)
 
-      content_tag(:button, class: "btn btn-default button #{klass}") do
+      options.merge!(class: "btn btn-default button #{klass}")
+      content_tag(:button, options) do
         "#{icon} #{label}".html_safe
       end   
     end
@@ -27,25 +28,29 @@ module Bootstrapped
       options[:class] += " cancel_link"
       id, klass, style, options = default_options(options)
 
-      link_to label, url, class: klass, style: style, id: id
+      options.merge!(class: klass, style: style, id: id)
+      link_to label, url, options
     end
 
     def button_link(label, url, options = {})
       id, klass, style, options = default_options(options)
 
-      link_to label, url, class: "btn btn-default button #{klass}", style: style, id: id
+      options.merge!(class: "btn btn-default button #{klass}", style: style, id: id)
+      link_to label, url, options
     end
 
     def new_button_link(label, url, options = {})
       id, klass, style, options = default_options(options)
 
-      link_to label, url, class: "btn btn-success button #{klass}", style: style, id: id
+      options.merge!(class: "btn btn-success button #{klass}", style: style, id: id)
+      link_to label, url, options
     end
 
     def delete_button_link(label, url, options = {})
       id, klass, style, options = default_options(options)
 
-      link_to label, url, class: "btn btn-danger button #{klass}", style: style, id: id, method: :delete, data: {confirm: "Are you sure?"}
+      options.merge!(class: "btn btn-danger button #{klass}", style: style, id: id, method: :delete, data: {confirm: "Are you sure?"})
+      link_to label, url, options
     end
   end
 end

@@ -6,7 +6,8 @@ module Bootstrapped
       options = {device: :md, size: 12}.merge!(options)
       id, klass, style, options = default_options(options)
 
-      content_tag(:div, class: "row #{klass}", style: style, id: id) do
+      options.merge!(class: "row #{klass}", style: style, id: id)
+      content_tag(:div, options) do
         content_tag(:div, class: "col-#{options[:device]}-#{options[:size]}") do
           yield
         end
@@ -15,7 +16,9 @@ module Bootstrapped
 
     def row(options = {})
       id, klass, style, options = default_options(options)
-      content_tag(:div, class: "row #{klass}", style: style, id: id) do
+
+      options.merge!(class: "row #{klass}", style: style, id: id)
+      content_tag(:div, options) do
         yield
       end
     end
@@ -23,7 +26,9 @@ module Bootstrapped
     def grid(options = {})
       options = {device: :md, size: 12}.merge!(options)
       id, klass, style, options = default_options(options)
-      content_tag(:div, class: "#{klass} col-#{options[:device]}-#{options[:size]}", style: style, id: id) do
+
+      options.merge!(class: "#{klass} col-#{options[:device]}-#{options[:size]}", style: style, id: id)
+      content_tag(:div, options) do
         yield
       end
     end
