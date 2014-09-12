@@ -47,10 +47,11 @@ module Bootstrapped
     end
 
     def delete_button_link(label, url, options = {})
-      options = {confirm_message: 'Are you sure?'}
+      options = {confirm_message: 'Are you sure?'}.merge(options)
       id, klass, style, options = default_options(options)
+      confirm_message = options.delete(:confirm_message)
 
-      options.merge!(class: "btn btn-danger button #{klass}", style: style, id: id, method: :delete, data: {confirm: options[:confirm_message]})
+      options.merge!(class: "btn btn-danger button #{klass}", style: style, id: id, method: :delete, data: {confirm: confirm_message})
       link_to label, url, options
     end
   end

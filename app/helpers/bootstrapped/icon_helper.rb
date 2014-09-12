@@ -3,8 +3,10 @@ module Bootstrapped
     def default_icon(type, options = {})
       options = {size: :md}.merge!(options)
       id, klass, style, options = default_options(options)
+      size = options.delete(:size)
+      title = options.delete(:title)
 
-      options.merge!(class: "glyphicon glyphicon-#{type} btn-#{options[:size]} #{klass}", title: '#{options[:title]}', style: style, id: id)
+      options.merge!(class: "glyphicon glyphicon-#{type} btn-#{size} #{klass}", title: title, style: style, id: id)
       content_tag :span, options do
       end.html_safe
     end
