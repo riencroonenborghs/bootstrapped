@@ -12,7 +12,7 @@ module Bootstrapped
 
       options.merge!(class: "badge #{klass}", style: style, id: id)
       content_tag :span, options do
-        label
+        concat label
       end
     end
   end
