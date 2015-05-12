@@ -20,7 +20,7 @@ module Bootstrapped
       options[:class] ||= ""
       options[:class] += " search_button"
 
-      button(label, save_icon, options)
+      button(label, search_icon, options)
     end
 
     def cancel_link(label = "Cancel", url = url_for(action: :index), options = {})
