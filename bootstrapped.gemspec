@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Rien Croonenborghs"]
   s.email       = ["rien@croonenborghs.net"]
   s.homepage    = "http://github.com/riencroonenborgs/bootstrapped"
-  s.summary     = "TODO: Summary of Bootstrapped."
-  s.description = "TODO: Description of Bootstrapped."
+  s.summary     = "Bootstrap your Rails app; easy helpers to alleviate the tedious HTML."
+  s.description = "Bootstrap your Rails app; easy helpers to alleviate the tedious HTML."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
